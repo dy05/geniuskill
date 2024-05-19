@@ -183,6 +183,10 @@ input:focus {
   justify-content: space-between;
 }
 
+.justify-center {
+  justify-content: center;
+}
+
 .justify-end {
   justify-content: end;
 }
@@ -255,8 +259,16 @@ input:focus {
   gap: 2rem;
 }
 
+.gap-12 {
+  gap: 3rem;
+}
+
 .gap-16 {
   gap: 4rem;
+}
+
+.gap-32 {
+  gap: 8rem;
 }
 
 .w-5 {
@@ -265,6 +277,10 @@ input:focus {
 
 .h-5 {
   height: 1.25rem;
+}
+
+.h-36 {
+  height: 9rem;
 }
 
 .w-1\/2 {
@@ -323,6 +339,10 @@ input:focus {
   margin-top: 1.25rem;
 }
 
+.mt-8 {
+  margin-top: 2rem;
+}
+
 .my-5 {
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
@@ -356,8 +376,12 @@ input:focus {
   width: 20rem;
 }
 
-.w-64 {
+.w-72 {
   width: 18rem;
+}
+
+.w-64 {
+  width: 16rem;
 }
 
 .w-56 {
@@ -366,6 +390,14 @@ input:focus {
 
 .w-48 {
   width: 12rem;
+}
+
+.w-40 {
+  width: 10rem;
+}
+
+.w-36 {
+  width: 9rem;
 }
 
 .w-32 {
@@ -404,6 +436,10 @@ input:focus {
   font-size: 0.75rem;
 }
 
+.text-md {
+  font-size: 0.95rem;
+}
+
 .absolute {
   position: absolute;
 }
@@ -413,18 +449,33 @@ input:focus {
 }
 
 .bottom-0 {
-  bottom: 3.5vh;
+  bottom: 2vh;
 }
 
 .bottom-1 {
-  bottom: 8vh;
+  bottom: 5vh;
 }
 
 .left-2 {
-  left: 23.5vw;
+  left: 23vw;
 }
 
 .left-5 {
   left: 29vw;
 }
 
+.md\:ml-64 {
+  margin-left: 16rem;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.object-contain {
+  object-fit: contain;
+}
+
+svg {
+  width: 100%;
+}
