@@ -1,8 +1,18 @@
 import logo from './assets/img/logo.png';
 import phone from './assets/img/phone.png';
 import person from './assets/img/person_star.svg';
+import {useEffect, useState} from "react";
 
 function App() {
+  const [showMenu, setShowMenu] = useState(false);
+
+  useEffect(() => {
+    if (showMenu) {
+      document.body.classList.add('xs:overflow-hidden');
+    } else {
+      document.body.classList.remove('xs:overflow-hidden');
+    }
+  }, [showMenu]);
   const ButtonComingSoon = () => {
     return (
       <a href="#home" className="w-fit h-fit text-sm font-semibold rounded-xl bg-secondary py-3 px-12 text-white-light">
@@ -11,21 +21,49 @@ function App() {
     );
   };
 
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
+
   return (
     <>
       <header>
-        <nav className="flex gap-16 px-2 md:px-24 py-2">
+        <nav className="flex gap-16 px-2 xs:justify-between items-center md:px-24 py-2">
           <a href="#home">
             <img src={logo} className="w-20" alt="logo"/>
           </a>
-          <div className="flex hidden md:block gap-32 font-semibold items-center md:ml-64 px-5">
-            <a href="#home">
+          {!showMenu? (
+            <button type="button"
+                    className="cursor-pointer flex md:hidden h-fit border-none bg-transparent"
+                    onClick={() => toggleMenu()}>
+              <svg
+                className="w-5 h-5"
+                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+            </button>
+          ) : null}
+
+          {showMenu? (
+            <button type="button"
+                    className="cursor-pointer h-fit flex border-none bg-transparent md:hidden"
+                    onClick={() => toggleMenu()}>
+              <svg
+                className="w-5 h-5 border-none bg-transparent"
+                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+              </svg>
+            </button>
+          ) : null}
+
+          <div className={[showMenu ? "flex" : "hidden md:flex", "xs:inset-0 xs:absolute xs:w-full xs:h-[90vh] xs:top-3 xs:bg-white xs:py-8 xs:items-center flex-col md:flex-row gap-8 font-semibold items-center md:ml-64 px-2"].join(' ')}>
+            <a href="#home" className="w-auto flex-none">
               Accueil
             </a>
-            <a href="#home">
+            <a href="#home" className="w-auto flex-none">
               A Propos
             </a>
-            <a href="#forum">
+            <a href="#forum" className="w-auto flex-none">
               Forum
             </a>
           </div>
@@ -33,9 +71,12 @@ function App() {
       </header>
       <main>
         <div className="flex flex-col">
-          <div className="bg-primary px-4 md:px-24 flex py-16 justify-end">
-            <div className="flex flex-col mt-8 gap-3 w-1/2 items-center pt-8">
-              <div className="max-w-64 text-center">
+          <div className="bg-primary px-4 md:px-24 flex flex-col md:flex-row-reverse items-center py-16 md:justify-end">
+            <div className="md:w-1/2">
+              <img src={phone} alt="phone" className="w-64"/>
+            </div>
+            <div className="flex flex-col mt-1 md:mt-8 gap-3 md:w-1/2 items-center pt-8">
+              <div className="md:max-w-64 text-center">
                 <h3>
                   Venez atteindre les étoiles en étudiant avec nous !
                 </h3>
@@ -45,11 +86,8 @@ function App() {
                 <img src={person} alt="phone" className="w-64"/>
               </div>
             </div>
-            <div className="w-1/2">
-              <img src={phone} alt="phone" className="w-64"/>
-            </div>
           </div>
-          <div className="bg-white px-4 md:px-24 py-16 flex justify-center gap-12">
+          <div className="bg-white px-4 md:px-24 py-16 flex flex-col md:flex-row items-center justify-center gap-12">
             <div className="flex flex-col text-center">
               <span className="rounded">
                 <svg className="h-36 object-contain" viewBox="0 0 206 209" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
@@ -113,7 +151,7 @@ function App() {
                 L’outil parfait pour vous accompagner dans vos révisons
               </h3>
             </div>
-            <div className="text-center w-7/12 pb-5">
+            <div className="text-center md:w-7/12 pb-5">
               <p className="m-0 font-semibold text-md">
                 Chez Geniuskill, notre mission est de démocratiser l'éducation en mettant à disposition des cours de haute qualité, enseignés par des experts , dans une variété de domaines allant de la technologie à l'art, en passant par les affaires et bien d'autres encore.
               </p>
@@ -122,7 +160,7 @@ function App() {
               <ButtonComingSoon />
             </div>
 
-            <span className="absolute bottom-0 left-2">
+            <span className="absolute bottom-0 left-2 hidden md:block">
               <svg className="w-20" viewBox="0 0 194 234" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                 <rect width="143.669" height="201.913" transform="matrix(-0.96183 0.273647 0.273647 0.96183 138.185 0)" fill="url(#pattern0_283_105)" fillOpacity="0.5"/>
                 <defs>
@@ -134,7 +172,7 @@ function App() {
               </svg>
             </span>
 
-            <span className="absolute bottom-1 left-5">
+            <span className="absolute bottom-1 left-5 hidden md:block">
               <svg className="w-20" viewBox="0 0 194 234" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                 <rect x="55.2529" width="143.669" height="201.913" transform="rotate(15.8814 55.2529 0)" fill="url(#pattern0_283_104)" fillOpacity="0.5"/>
                 <defs>
@@ -146,14 +184,14 @@ function App() {
               </svg>
             </span>
           </div>
-          <div className="bg-white px-4 md:px-24 py-16 flex gap-5">
-            <div className="w-5/12">
+          <div className="bg-white px-4 md:px-24 py-16 flex flex-col md:flex-row gap-5">
+            <div className="md:w-5/12">
               <p className="font-bold m-0 max-w-72 leading-5">
                 Rejoignez notre forum pour commencer à discuter avec d’autres apprentis ou professeurs !
               </p>
             </div>
-            <div className="w-1/2 flex gap-16">
-              <div className="flex flex-col gap-4 w-56">
+            <div className="md:w-1/2 flex gap-16 pr-4">
+              <div className="flex flex-col gap-4 w-full md:w-56">
                 <div>
                   <label htmlFor="pseudo" className="hidden"></label>
                   <input type="text" className="w-full h-5 font-semibold bg-primary text-dark border-none rounded p-2"
@@ -170,7 +208,7 @@ function App() {
                   </button>
                 </div>
               </div>
-              <div className="pt-2">
+              <div className="pt-2 hidden md:block">
                 <span>
                   <svg className="w-32" viewBox="0 0 288 253" fill="none"
                        xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
@@ -194,7 +232,7 @@ function App() {
           <div className="flex flex-col w-5/12">
             <h4>Suivez nous</h4>
             <div className="flex w-fit gap-2">
-              <a href="https://www.instagram.com/geniius_skill/" target="_blank">
+              <a href="https://www.instagram.com/geniius_skill/" target="_blank" rel="noreferrer">
                 <svg className="w-5 h-5"
                      viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M14.21 0H34.79C42.63 0 49 6.37 49 14.21V34.79C49 38.5587 47.5029 42.1731 44.838 44.838C42.1731 47.5029 38.5587 49 34.79 49H14.21C6.37 49 0 42.63 0 34.79V14.21C0 10.4413 1.49712 6.8269 4.16201 4.16201C6.8269 1.49712 10.4413 0 14.21 0ZM13.72 4.9C11.3808 4.9 9.13739 5.82925 7.48332 7.48332C5.82925 9.13739 4.9 11.3808 4.9 13.72V35.28C4.9 40.1555 8.8445 44.1 13.72 44.1H35.28C37.6192 44.1 39.8626 43.1708 41.5167 41.5167C43.1708 39.8626 44.1 37.6192 44.1 35.28V13.72C44.1 8.8445 40.1555 4.9 35.28 4.9H13.72ZM37.3625 8.575C38.1747 8.575 38.9537 8.89766 39.528 9.47199C40.1023 10.0463 40.425 10.8253 40.425 11.6375C40.425 12.4497 40.1023 13.2287 39.528 13.803C38.9537 14.3773 38.1747 14.7 37.3625 14.7C36.5503 14.7 35.7713 14.3773 35.197 13.803C34.6227 13.2287 34.3 12.4497 34.3 11.6375C34.3 10.8253 34.6227 10.0463 35.197 9.47199C35.7713 8.89766 36.5503 8.575 37.3625 8.575ZM24.5 12.25C27.7489 12.25 30.8647 13.5406 33.1621 15.8379C35.4594 18.1353 36.75 21.2511 36.75 24.5C36.75 27.7489 35.4594 30.8647 33.1621 33.1621C30.8647 35.4594 27.7489 36.75 24.5 36.75C21.2511 36.75 18.1353 35.4594 15.8379 33.1621C13.5406 30.8647 12.25 27.7489 12.25 24.5C12.25 21.2511 13.5406 18.1353 15.8379 15.8379C18.1353 13.5406 21.2511 12.25 24.5 12.25ZM24.5 17.15C22.5507 17.15 20.6812 17.9244 19.3028 19.3028C17.9244 20.6812 17.15 22.5507 17.15 24.5C17.15 26.4493 17.9244 28.3188 19.3028 29.6972C20.6812 31.0756 22.5507 31.85 24.5 31.85C26.4493 31.85 28.3188 31.0756 29.6972 29.6972C31.0756 28.3188 31.85 26.4493 31.85 24.5C31.85 22.5507 31.0756 20.6812 29.6972 19.3028C28.3188 17.9244 26.4493 17.15 24.5 17.15Z" fill="#164E90"/>
@@ -206,7 +244,8 @@ function App() {
                   <path d="M40.1356 0.442383C41.4515 0.442383 42.7135 0.965126 43.644 1.89562C44.5745 2.82611 45.0972 4.08812 45.0972 5.40403V40.1356C45.0972 41.4515 44.5745 42.7135 43.644 43.644C42.7135 44.5745 41.4515 45.0972 40.1356 45.0972H5.40403C4.08812 45.0972 2.82611 44.5745 1.89562 43.644C0.965126 42.7135 0.442383 41.4515 0.442383 40.1356V5.40403C0.442383 4.08812 0.965126 2.82611 1.89562 1.89562C2.82611 0.965126 4.08812 0.442383 5.40403 0.442383H40.1356ZM38.8952 38.8952V25.7468C38.8952 23.6019 38.0431 21.5448 36.5264 20.0281C35.0097 18.5114 32.9526 17.6593 30.8077 17.6593C28.699 17.6593 26.243 18.9493 25.0522 20.8844V18.1307H18.1307V38.8952H25.0522V26.6647C25.0522 24.7545 26.5903 23.1915 28.5005 23.1915C29.4216 23.1915 30.3051 23.5575 30.9564 24.2088C31.6077 24.8602 31.9737 25.7436 31.9737 26.6647V38.8952H38.8952ZM10.068 14.2358C11.1733 14.2358 12.2334 13.7967 13.0151 13.0151C13.7967 12.2334 14.2358 11.1733 14.2358 10.068C14.2358 7.76082 12.3751 5.87539 10.068 5.87539C8.95604 5.87539 7.88964 6.31711 7.10337 7.10337C6.31711 7.88964 5.87539 8.95604 5.87539 10.068C5.87539 12.3751 7.76082 14.2358 10.068 14.2358ZM13.5163 38.8952V18.1307H6.64444V38.8952H13.5163Z" fill="#164E90"/>
                 </svg>
               </a>
-              <a href="https://www.facebook.com/people/Geniius-Skill/pfbid023K8wU75eo3pYUtYWVFcq1XSjsjufEZF8jrcYS1nd7FNaGwLwYKy6tvLyLueRDXe8l/?locale=fr_FR" target="_blank">
+              <a href="https://www.facebook.com/people/Geniius-Skill/pfbid023K8wU75eo3pYUtYWVFcq1XSjsjufEZF8jrcYS1nd7FNaGwLwYKy6tvLyLueRDXe8l/?locale=fr_FR"
+                 target="_blank" rel="noreferrer">
                 <svg className="w-5 h-5"
                      viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M49.4845 24.7423C49.4845 11.0845 38.4 0 24.7423 0C11.0845 0 0 11.0845 0 24.7423C0 36.7175 8.51134 46.6887 19.7938 48.9897V32.1649H14.8454V24.7423H19.7938V18.5567C19.7938 13.7814 23.6784 9.89691 28.4536 9.89691H34.6392V17.3196H29.6907C28.3299 17.3196 27.2165 18.433 27.2165 19.7938V24.7423H34.6392V32.1649H27.2165V49.3608C39.7113 48.1237 49.4845 37.5835 49.4845 24.7423Z" fill="#164E90"/>
