@@ -479,15 +479,15 @@ input:focus {
 }
 
 .bottom-0 {
-  bottom: 2vh;
+  bottom: 1.5vh;
 }
 
 .bottom-1 {
-  bottom: 5vh;
+  bottom: 4vh;
 }
 
 .left-2 {
-  left: 23vw;
+  left: 22vw;
 }
 
 .left-5 {
@@ -506,6 +506,29 @@ svg {
   width: 100%;
 }
 
+
+@media (min-width: 1571px) {
+  .md\:px-24 {
+    padding-left: 25vw !important;
+    padding-right: 25vw !important;
+  }
+
+  .bottom-0 {
+    bottom: 1.25vh !important;
+  }
+
+  .bottom-1 {
+    bottom: 3vh !important;
+  }
+
+  .left-2 {
+    left: 33.5vw !important;
+  }
+
+  .left-5 {
+    left: 37.5vw !important;
+  }
+}
 
 @media (min-width: 789px) {
   .md\:block {
