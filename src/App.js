@@ -227,7 +227,7 @@ function App() {
         </div>
       </main>
 
-      <footer className="bg-primary py-5 px-5 md: px-24 flex flex-col gap-5">
+      <footer className="bg-primary py-5 px-5 md:px-24 flex flex-col gap-5">
         <div className="flex flex-col md:flex-row">
           <div className="flex flex-col w-5/12">
             <h4>Suivez nous</h4>
@@ -253,9 +253,9 @@ function App() {
               </a>
             </div>
           </div>
-          <div className="w-1/3 my-5 pt-5">
-            <img src={logo} alt="logo" className="w-32 object-contain " />
-          </div>
+        </div>
+        <div className="flex md:justify-center mb-5 md:-mt-16">
+          <img src={logo} alt="logo" className="w-32 object-contain " />
         </div>
         <div className="flex flex-col md:flex-row md:justify-between py-5 font-light text-sm gap-2">
           <a href="#mentions-legales">
