@@ -141,6 +141,21 @@ input:focus {
   padding-right: 0.25rem;
 }
 
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 .px-5 {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
@@ -164,11 +179,6 @@ input:focus {
 .px-16 {
   padding-left: 4rem;
   padding-right: 4rem;
-}
-
-.px-24 {
-  padding-left: 6rem;
-  padding-right: 6rem;
 }
 
 .flex {
@@ -428,6 +438,10 @@ input:focus {
   max-width: 16rem;
 }
 
+.max-w-72 {
+  max-width: 18rem;
+}
+
 .max-w-80 {
   max-width: 20rem;
 }
@@ -464,10 +478,6 @@ input:focus {
   left: 29vw;
 }
 
-.md\:ml-64 {
-  margin-left: 16rem;
-}
-
 .overflow-hidden {
   overflow: hidden;
 }
@@ -479,3 +489,51 @@ input:focus {
 svg {
   width: 100%;
 }
+
+
+@media (min-width: 769px) {
+  .md\:block {
+    display: block !important;
+  }
+
+  .md\:flex {
+    display: flex !important;
+  }
+
+  .md\:ml-64 {
+    margin-left: 30vw;
+  }
+
+  .md\:flex-row {
+    flex-direction: row;
+  }
+
+  .md\:justify-between {
+    justify-content: space-between;
+  }
+
+  .md\:justify-center {
+    justify-content: center;
+  }
+
+  .md\:justify-end {
+    justify-content: end;
+  }
+
+  .md\:items-center {
+    align-items: center;
+  }
+
+  .md\:justify-items {
+    justify-items: center;
+  }
+
+  .md\:px-24 {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+
+
+}
+
+
